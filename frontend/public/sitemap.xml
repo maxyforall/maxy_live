@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.maxy.co.in/</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/about</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/account</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/sitemap</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/brand</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/not-found</loc>
+  </url>
+
+  <!-- Auth -->
+  <url>
+    <loc>https://www.maxy.co.in/sign-up</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/sign-in</loc>
+  </url>
+
+  <!-- Worlds -->
+  <url>
+    <loc>https://www.maxy.co.in/lifestyle</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/productivity</loc>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://www.maxy.co.in/privacy-policy</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/terms-of-service</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/cookie-policy</loc>
+  </url>
+
+  <!-- Support -->
+  <url>
+    <loc>https://www.maxy.co.in/support</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/contact</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/support/faq</loc>
+  </url>
+
+  <url>
+    <loc>https://www.maxy.co.in/support/faq/maxy</loc>
+  </url>
+
+</urlset>

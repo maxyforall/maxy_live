@@ -1,0 +1,5 @@
+.env
+node_modules/
+backend-woc/node_modules
+backend-corex/node_modules
+backend-maxy/node_modules

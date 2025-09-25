@@ -1,0 +1,189 @@
+<---------------- Image in the div ----------------->
+
+import Image from "next/image";
+
+export default function Main() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen text-center -mt-10">
+      <Image
+        src="/sentence1.png"
+        alt="sentence1"
+        width={800} // adjust as needed
+        height={100} // adjust as needed
+      />
+      {/* <h1 className="text-2xl font-regular mt-1 text-[#999999] font-sans">Welcome to Maxy</h1> */}
+    </div>
+  );
+}
+
+<---------------- Sections in a single div (Scroll whithin the single space) ----------------->
+
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth">
+      {/* Section 1 */}
+      <section className="h-screen flex flex-col items-center justify-center snap-start">
+        <Image
+          src="/sentence1.png"
+          alt="sentence1"
+          width={800}
+          height={100}
+        />
+        {/* You can add more content here */}
+      </section>
+
+      {/* Section 2 */}
+      <section className="h-screen flex items-center justify-center snap-start ">
+        <h1 className="text-4xl font-bold">Section 2</h1>
+      </section>
+
+      {/* Section 3 */}
+      <section className="h-screen flex items-center justify-center snap-start ">
+        <h1 className="text-4xl font-bold">Section 3</h1>
+      </section>
+
+      {/* Section 4 */}
+      <section className="h-screen flex items-center justify-center snap-start ">
+        <h1 className="text-4xl font-bold">Section 4</h1>
+      </section>
+
+      {/* Section 5 */}
+      <section className="h-screen flex items-center justify-center snap-start ">
+        <h1 className="text-4xl font-bold">Section 5</h1>
+      </section>
+
+      {/* Section 6 */}
+      <section className="h-screen flex items-center justify-center snap-start  text-white">
+        <h1 className="text-4xl font-bold">Section 6</h1>
+      </section>
+
+      {/* Section 7 */}
+      <section className="h-screen flex items-center justify-center snap-start  text-white">
+        <h1 className="text-4xl font-bold">Section 7</h1>
+      </section>
+
+      {/* Section 8 */}
+      <section className="h-screen flex items-center justify-center snap-start text-white">
+        <h1 className="text-4xl font-bold">Section 8</h1>
+      </section>
+    </div>
+  );
+}
+
+<---------------- Multiple div Sections in a single div (scroll through out  the screen)----------------->
+
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen w-full flex flex-col">
+      {/* Section 1 */}
+      <div className="h-screen flex flex-col items-center justify-center ">
+        <Image
+          src="/sentence1.png"
+          alt="sentence1"
+          width={800}
+          height={100}
+        />
+      </div>
+
+      {/* Section 2 */}
+      <div className="h-screen flex items-center justify-center ">
+        <h1 className="text-4xl font-bold">Section 2</h1>
+      </div>
+
+      {/* Section 3 */}
+      <div className="h-screen flex items-center justify-center ">
+        <h1 className="text-4xl font-bold">Section 3</h1>
+      </div>
+
+      {/* Section 4 */}
+      <div className="h-screen flex items-center justify-center ">
+        <h1 className="text-4xl font-bold">Section 4</h1>
+      </div>
+
+      {/* Section 5 */}
+      <div className="h-screen flex items-center justify-center ">
+        <h1 className="text-4xl font-bold">Section 5</h1>
+      </div>
+
+      {/* Section 6 */}
+      <div className="h-screen flex items-center justify-center  text-white">
+        <h1 className="text-4xl font-bold">Section 6</h1>
+      </div>
+
+      {/* Section 7 */}
+      <div className="h-screen flex items-center justify-center  text-white">
+        <h1 className="text-4xl font-bold">Section 7</h1>
+      </div>
+
+      {/* Section 8 */}
+      <div className="h-screen flex items-center justify-center  text-white">
+        <h1 className="text-4xl font-bold">Section 8</h1>
+      </div>
+    </div>
+  );
+}
+
+
+
+-------------------------------------------------------
+
+
+{/* Hero Section */}
+      <motion.div
+        ref={el => { if (el) sectionRefs.current[0].current = el; }}
+        initial="hidden"
+        animate="visible"
+        variants={staggerChildren}
+        className="relative min-h-[820px] sm:min-h-[860px] md:min-h-[920px] w-full flex items-center justify-center px-4 sm:px-6"
+        id="home"
+      >
+        {/* Background Video
+  <motion.div
+    variants={fadeInVariants}
+    className="absolute inset-0 z-0"
+  >
+        <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            onContextMenu={(e) => e.preventDefault()}
+            className="w-full h-full object-cover opacity-50"
+            style={{ filter: 'blur(8px)' }} 
+      >
+            <source src="/hero_bg.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>
+        </motion.div> */}
+
+        {/* Foreground Content */}
+        <motion.div
+          variants={fadeInVariants}
+          className="z-10 relative flex flex-col items-center text-center px-4 mb-9"
+        >
+          <h1 className="text-white text-4xl sm:text-4xl md:text-[70px] font-regular font-outfit mb-4 drop-shadow-md">
+            Maxy welcomes you!
+          </h1>
+          <p className="text-primary text-lg sm:text-xl md:text-[16px] font-regular font-poppins mb-6 max-w-2xl drop-shadow-sm">
+            At <strong>Maxy</strong>, we’re redefining boundaries <br className="hidden sm:block" />
+            discover the story, purpose, and vision behind our creative journey.
+          </p>
+          <motion.a
+            href="/about"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <button className="px-4 py-1.5 rounded-[24px] border border-primary text-primary hover:bg-primary hover:text-white transition-all text-sm sm:text-base font-medium shadow-md">
+              Know about Maxy
+            </button>
+          </motion.a>
+
+        </motion.div>
+
+      </motion.div>
