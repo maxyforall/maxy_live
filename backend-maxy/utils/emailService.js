@@ -8,13 +8,15 @@
  * Sends notification email when a new contact form is submitted
  * @param {Object} contactData - The contact form data
  */
-const sendContactNotification = async (contactData) => {
+export const sendContactNotification = async (contactData) => {
   try {
     // This is a placeholder for future implementation
     console.log('Email notification would be sent with data:', contactData);
-    
+
     // Example implementation with nodemailer (commented out)
     /*
+    import nodemailer from 'nodemailer';
+
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
@@ -39,14 +41,10 @@ const sendContactNotification = async (contactData) => {
       `
     });
     */
-    
+
     return true;
   } catch (error) {
     console.error('Error sending email notification:', error);
     return false;
   }
 };
-
-module.exports = {
-  sendContactNotification
-}; 

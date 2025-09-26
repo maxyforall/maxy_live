@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import Contact from '../models/Contact.js';
+import { validateContactForm } from '../middleware/validator.js';
+import { sendContactNotification } from '../utils/emailService.js';
+
 const router = express.Router();
-const Contact = require('../models/Contact');
-const { validateContactForm } = require('../middleware/validator');
-const { sendContactNotification } = require('../utils/emailService');
 
 // @route   POST /api/contact
 // @desc    Submit a contact form
@@ -87,4 +88,4 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-module.exports = router; 
+export default router;

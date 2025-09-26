@@ -1,45 +1,25 @@
-/**
- * Password validation utilities
- */
+import bcrypt from 'bcrypt';
 
 /**
  * Validate password strength
- * Requirements:
- * - Minimum 8 characters
- * - At least one uppercase letter
- * - At least one lowercase letter
- * - At least one number
- * - At least one special character
  */
-const validatePasswordStrength = (password) => {
+export const validatePasswordStrength = (password) => {
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const hasNumbers = /\d/.test(password);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    
+
     const errors = [];
-    
+
     if (password.length < minLength) {
         errors.push(`Password must be at least ${minLength} characters long`);
     }
-    
-    if (!hasUpperCase) {
-        errors.push('Password must contain at least one uppercase letter');
-    }
-    
-    if (!hasLowerCase) {
-        errors.push('Password must contain at least one lowercase letter');
-    }
-    
-    if (!hasNumbers) {
-        errors.push('Password must contain at least one number');
-    }
-    
-    if (!hasSpecialChar) {
-        errors.push('Password must contain at least one special character');
-    }
-    
+    if (!hasUpperCase) errors.push('Password must contain at least one uppercase letter');
+    if (!hasLowerCase) errors.push('Password must contain at least one lowercase letter');
+    if (!hasNumbers)  errors.push('Password must contain at least one number');
+    if (!hasSpecialChar) errors.push('Password must contain at least one special character');
+
     return {
         isValid: errors.length === 0,
         errors,
@@ -50,24 +30,20 @@ const validatePasswordStrength = (password) => {
 /**
  * Calculate password strength score
  */
-const getPasswordStrength = (password) => {
+export const getPasswordStrength = (password) => {
     let score = 0;
-    
-    // Length bonus
     if (password.length >= 8) score += 1;
     if (password.length >= 12) score += 1;
     if (password.length >= 16) score += 1;
-    
-    // Character variety bonus
+
     if (/[a-z]/.test(password)) score += 1;
     if (/[A-Z]/.test(password)) score += 1;
     if (/\d/.test(password)) score += 1;
     if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += 1;
-    
-    // Complexity bonus
+
     if (/(.*[a-z].*[A-Z])|(.*[A-Z].*[a-z])/.test(password)) score += 1;
     if (/(.*\d.*[a-zA-Z])|(.*[a-zA-Z].*\d)/.test(password)) score += 1;
-    
+
     if (score <= 3) return 'weak';
     if (score <= 5) return 'medium';
     if (score <= 7) return 'strong';
@@ -77,22 +53,12 @@ const getPasswordStrength = (password) => {
 /**
  * Sanitize password input
  */
-const sanitizePassword = (password) => {
-    // Remove leading/trailing whitespace
-    return password.trim();
-};
+export const sanitizePassword = (password) => password.trim();
 
 /**
  * Check if new password is different from current password
  */
-const isPasswordDifferent = async (newPassword, currentPasswordHash, bcrypt) => {
+export const isPasswordDifferent = async (newPassword, currentPasswordHash) => {
     const isSame = await bcrypt.compare(newPassword, currentPasswordHash);
     return !isSame;
-};
-
-module.exports = {
-    validatePasswordStrength,
-    getPasswordStrength,
-    sanitizePassword,
-    isPasswordDifferent
 };

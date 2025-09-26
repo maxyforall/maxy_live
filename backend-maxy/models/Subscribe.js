@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const SubscribeSchema = new mongoose.Schema({
-
   email: {
     type: String,
     required: true
@@ -12,4 +11,6 @@ const SubscribeSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Subscribe', SubscribeSchema);
+const Subscribe = mongoose.model('Subscribe', SubscribeSchema);
+
+export default Subscribe; // ✅ ESM default export

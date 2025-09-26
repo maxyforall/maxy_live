@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Subscribe from '../models/Subscribe.js';
+
 const router = express.Router();
-const Subscribe = require('../models/Subscribe');
 
 // @route   POST /api/subscribe/create
 // @desc    Subscribe with email only
@@ -11,23 +12,23 @@ router.post('/create', async (req, res) => {
 
     // Basic email validation
     if (
-  !email ||
-  !/^(?!\.)[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/.test(email)
-) {
-  return res.status(400).json({
-    success: false,
-    message: 'A valid email is required.'
-  });
-}
+      !email ||
+      !/^(?!\.)[\w!#$%&'*+/=?^`{|}~-]+(?:\.[\w!#$%&'*+/=?^`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/.test(email)
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: 'A valid email is required.'
+      });
+    }
 
-// Check if email is already subscribed
-const existing = await Subscribe.findOne({ email });
-if (existing) {
-  return res.status(409).json({
-    success: false,
-    message: 'This email is already subscribed.'
-  });
-}
+    // Check if email is already subscribed
+    const existing = await Subscribe.findOne({ email });
+    if (existing) {
+      return res.status(409).json({
+        success: false,
+        message: 'This email is already subscribed.'
+      });
+    }
 
     // Create new subscription entry
     const newSubscribe = new Subscribe({ email });
@@ -67,7 +68,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 // @route   DELETE /api/subscribe/:id
 // @desc    Delete a subscription by ID
 // @access  Private (or public, depending on your needs)
@@ -96,5 +96,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-
-module.exports = router;
+export default router;
