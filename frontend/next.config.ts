@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  
-}
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
+  },
+};
 
-module.exports = nextConfig
+export default nextConfig;

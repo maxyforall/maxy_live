@@ -53,7 +53,9 @@ export const useProfile = () => {
   const [updating, setUpdating] = useState(false);
   const [uploadingDP, setUploadingDP] = useState(false);
 
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+console.log("Backend API:", API_URL);
 
   const getAuthHeaders = () => {
     // Try multiple token storage locations
@@ -81,7 +83,7 @@ export const useProfile = () => {
         throw new Error('No authentication token found');
       }
       
-      const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/profile`, {
         headers
       });
 
@@ -143,7 +145,7 @@ export const useProfile = () => {
       }
       console.log('Updating profile with data:', profileData);
       
-      const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/profile`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(profileData)
@@ -218,7 +220,7 @@ export const useProfile = () => {
         throw new Error('New password must be different from current password');
       }
       
-      const response = await fetch(`${API_BASE_URL}/auth/change-password`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/change-password`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({
@@ -273,7 +275,7 @@ export const useProfile = () => {
   const updateMaxyId = async (maxyIdData: UpdateMaxyIdData) => {
     try {
       setUpdating(true);
-      const response = await fetch(`${API_BASE_URL}/update-maxy-id`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/update-maxy-id`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(maxyIdData)
@@ -300,7 +302,7 @@ export const useProfile = () => {
   const acceptTerms = async (termsData: TermsAcceptanceData) => {
     try {
       setUpdating(true);
-      const response = await fetch(`${API_BASE_URL}/accept-terms`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/accept-terms`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(termsData)
@@ -326,7 +328,7 @@ export const useProfile = () => {
 
   const getAccountDetails = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/account-details`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/account-details`, {
         headers: getAuthHeaders()
       });
 
@@ -344,7 +346,7 @@ export const useProfile = () => {
   const deactivateAccount = async () => {
     try {
       setUpdating(true);
-      const response = await fetch(`${API_BASE_URL}/deactivate-account`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/deactivate-account`, {
         method: 'PUT',
         headers: getAuthHeaders()
       });
@@ -376,7 +378,7 @@ export const useProfile = () => {
       
       if (!file) {
         // Handle DP removal
-        const response = await fetch(`${API_BASE_URL}/upload/dp`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload/dp`, {
           method: 'DELETE',
           headers: getAuthHeaders()
         });
@@ -400,7 +402,7 @@ export const useProfile = () => {
         // We should not include Content-Type header when sending FormData
         const { 'Content-Type': contentType, ...headersWithoutContentType } = headers;
 
-        const response = await fetch(`${API_BASE_URL}/upload/dp`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/upload/dp`, {
           method: 'POST',
           headers: headersWithoutContentType,
           body: formData

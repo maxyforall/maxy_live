@@ -19,6 +19,11 @@ export default function Contact() {
   const [email, setSubscribeEmail] = useState('');
   const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+console.log("Backend API:", API_URL);
+
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
@@ -33,7 +38,7 @@ export default function Contact() {
     setStatus('loading');
 
     try {
-      const res = await fetch('http://localhost:5000/api/contact/create', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -59,7 +64,7 @@ export default function Contact() {
     e.preventDefault();
     setSubscribeStatus('loading');
     try {
-      const res = await fetch('http://localhost:5000/api/subscribe/create', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscribe/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email }),

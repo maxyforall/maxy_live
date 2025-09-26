@@ -12,6 +12,10 @@ export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+console.log("Backend API:", API_URL);
+
   const validateMaxyId = (id: string) =>
     /^(?!.*\.\.)(?!\.)(?!\.$)[a-z0-9._]{3,30}$/.test(id);
 
@@ -35,7 +39,7 @@ export default function SignIn() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

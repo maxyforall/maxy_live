@@ -30,6 +30,11 @@ export default function SignUp() {
 
   const totalSteps = 4;
 
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+console.log("Backend API:", API_URL);
+
+
   const validateMaxyId = (id: string) => {
     const pattern = /^(?!.*\.\.)(?!\.)(?!\.$)[a-z0-9._]{3,13}$/;
     return pattern.test(id);
@@ -204,7 +209,7 @@ export default function SignUp() {
         termsAcceptanceDate: new Date().toISOString()
       };
 
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData),

@@ -13,7 +13,7 @@ const testUser = {
 };
 
 // API Endpoints Test
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 // Test functions
 async function testUserRegistration() {

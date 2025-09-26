@@ -13,7 +13,9 @@ const testUser = {
 };
 
 // API endpoints
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+console.log("Backend API:", API_URL);
 
 // Test functions
 async function testRegistration() {

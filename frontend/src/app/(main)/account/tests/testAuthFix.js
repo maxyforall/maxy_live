@@ -1,5 +1,5 @@
 // Quick test to verify authentication fix
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 async function testAuthFix() {
   console.log('🧪 Testing Authentication Fix...\n');

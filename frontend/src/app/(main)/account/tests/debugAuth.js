@@ -1,7 +1,7 @@
 // Quick Authentication Debug Script
 // Tests the authentication flow step by step
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 async function debugAuth() {
   console.log('🔍 Debugging Authentication Flow\n');

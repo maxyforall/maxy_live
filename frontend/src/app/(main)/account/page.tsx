@@ -57,6 +57,11 @@ export default function AccountPage() {
     options?: string[]
   } | null>(null);
 
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  console.log("Backend API:", API_URL);
+
+
   const handleSaveDp = async (file: File | null) => {
     try {
       await uploadDisplayPicture(file);
@@ -253,7 +258,7 @@ export default function AccountPage() {
         return;
       }
 
-      const response = await fetch(`http://localhost:5000/api/auth/${profile._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/${profile._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -505,7 +510,7 @@ export default function AccountPage() {
                 <div className="relative">
                   {profile?.displayPicture ? (
                     <img
-                      src={`http://localhost:5000${profile.displayPicture}`}
+                      src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${profile.displayPicture}`}
                       alt="Profile Picture"
                       className="w-24 h-24 rounded-full object-cover border-2 border-gray-700"
                     />
@@ -705,8 +710,8 @@ export default function AccountPage() {
                   <span className="text-gray-400 text-sm capitalize">{profile?.account_status || 'active'}</span>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs ${profile?.account_status === 'active'
-                    ? 'bg-green-900/30 text-green-400'
-                    : 'bg-red-900/30 text-red-400'
+                  ? 'bg-green-900/30 text-green-400'
+                  : 'bg-red-900/30 text-red-400'
                   }`}>
                   {profile?.account_status || 'active'}
                 </span>
@@ -857,7 +862,7 @@ export default function AccountPage() {
                   <div className="flex items-center gap-4">
                     {profile?.displayPicture ? (
                       <img
-                        src={`http://localhost:5000${profile.displayPicture}`}
+                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${profile.displayPicture}`}
                         alt="Profile Picture"
                         className="w-14 h-14 rounded-full object-cover border-2 border-gray-700"
                       />
