@@ -83,7 +83,7 @@ console.log("Backend API:", API_URL);
         throw new Error('No authentication token found');
       }
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/profile`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/profile`, {
         headers
       });
 
