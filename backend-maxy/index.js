@@ -29,14 +29,27 @@ connectDB();
 
 const app = express();
 
-// Middleware
+const allowedOrigins = [
+  'http://localhost:3000',                                         // for local development
+  'http://fn-alb-maxy-1454129065.ap-south-1.elb.amazonaws.com',    // your AWS ALB URL
+  'https://maxy.co.in'                                             // your final production domain
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id'],
 }));
-app.use(express.json());
+
 
 // Set up static file serving for uploads
 const __filename = fileURLToPath(import.meta.url);
