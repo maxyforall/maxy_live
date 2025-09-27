@@ -50,6 +50,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id'],
 }));
 
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Set up static file serving for uploads
 const __filename = fileURLToPath(import.meta.url);
