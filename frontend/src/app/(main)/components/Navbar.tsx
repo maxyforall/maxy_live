@@ -12,7 +12,7 @@ export default function Navbar() {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isAtTop, setIsAtTop] = useState(true);
-    
+
     // Use the user context instead of local state
     const { user, setUser } = useUser();
     useEffect(() => {
@@ -345,18 +345,26 @@ export default function Navbar() {
                                     // Logged in user section
                                     <div className="space-y-4">
                                         <div className="flex items-center gap-4 p-4 bg-gray-800/30 rounded-xl">
-                                            <Image
-                                                src={user.avatar || "/dp_user.jpg"}
-                                                alt="User Avatar"
-                                                width={48}
-                                                height={48}
-                                                className="rounded-full ring-2 ring-gray-500/30"
-                                            />
+                                            {user.avatar ? (
+                                                <Image
+                                                    src={user.avatar}
+                                                    alt="User Avatar"
+                                                    width={48}
+                                                    height={48}
+                                                    className="rounded-full ring-2 ring-gray-500/30"
+                                                />
+                                            ) : (
+                                                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#2a2a2a] text-white font-semibold text-lg ring-2 ring-gray-500/30">
+                                                    {(user.firstName[0] + user.lastName[0]).toUpperCase()}
+                                                </div>
+                                            )}
+
                                             <div className="flex-1">
                                                 <p className="text-white font-semibold text-lg">{user.firstName + ' ' + user.lastName}</p>
                                                 <p className="text-gray-400 text-sm">{'@' + user.maxy_id}</p>
                                             </div>
                                         </div>
+
 
                                         <div className="space-y-2">
                                             <Link

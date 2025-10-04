@@ -83,7 +83,7 @@ console.log("Backend API:", API_URL);
         throw new Error('No authentication token found');
       }
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/profile`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/profile`, {
         headers
       });
 
@@ -145,7 +145,7 @@ console.log("Backend API:", API_URL);
       }
       console.log('Updating profile with data:', profileData);
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/profile`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/profile`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(profileData)
@@ -220,7 +220,7 @@ console.log("Backend API:", API_URL);
         throw new Error('New password must be different from current password');
       }
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/change-password`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/change-password`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({
@@ -275,7 +275,7 @@ console.log("Backend API:", API_URL);
   const updateMaxyId = async (maxyIdData: UpdateMaxyIdData) => {
     try {
       setUpdating(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/update-maxy-id`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/update-maxy-id`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(maxyIdData)
@@ -302,7 +302,7 @@ console.log("Backend API:", API_URL);
   const acceptTerms = async (termsData: TermsAcceptanceData) => {
     try {
       setUpdating(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/accept-terms`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/accept-terms`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(termsData)
@@ -328,7 +328,7 @@ console.log("Backend API:", API_URL);
 
   const getAccountDetails = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/account-details`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/account-details`, {
         headers: getAuthHeaders()
       });
 
@@ -346,7 +346,7 @@ console.log("Backend API:", API_URL);
   const deactivateAccount = async () => {
     try {
       setUpdating(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/deactivate-account`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/deactivate-account`, {
         method: 'PUT',
         headers: getAuthHeaders()
       });

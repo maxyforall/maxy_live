@@ -258,7 +258,7 @@ export default function AccountPage() {
         return;
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/${profile._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/auth/${profile._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
