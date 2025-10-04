@@ -241,9 +241,9 @@ export default function Productivity() {
         <div className="max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { label: "Team Collaboration", image: "/Productivity/team_collab.jpeg" },
-            { label: "Networking", image: "/productivity/networking.png" },
-            { label: "Idea Exchange", image: "/productivity/ideaex.png" },
-            { label: "Communication", image: "/productivity/communicate.png" }
+            { label: "Networking", image: "/Productivity/networking.jpeg" },
+            { label: "Idea Exchange", image: "/Productivity/ideas.jpeg" },
+            { label: "Communication", image: "/Productivity/digital_assets.jpeg" }
           ].map((item, index) => (
             <div key={index} className="relative h-[200px] sm:h-[250px] rounded-2xl overflow-hidden shadow-lg group card">
               <Image src={item.image} alt={item.label} fill className="object-cover transition-all duration-700 filter group-hover:blur-[2px] group-hover:brightness-75" />
