@@ -15,7 +15,7 @@ export const faqData: Record<string, FAQCategory> = {
     faqs: [
       {
         q: "What is Maxy?",
-        a: "Maxy is a tech company providing creative solutions through applications and services, divided into Lifestyle and Productivity worlds. We also run Share Space for engaging content."
+        a: "Maxy is a tech company delivering creative solutions through applications and services, organized into two worlds: Productivity and Lifestyle. We also host platforms that offer engaging content."
       },
       {
         q: "What worlds does Maxy have?",
@@ -35,7 +35,7 @@ export const faqData: Record<string, FAQCategory> = {
       },
       {
         q: "Where do I create a Maxy ID?",
-        a: "You can create a Maxy ID by visiting https://maxy.co.in."
+        a: "You can create a Maxy ID by visiting https://maxy.co.in/signup."
       },
       {
         q: "I already have a Maxy ID. Do I need to create a new one for other Maxy apps or platforms?",
@@ -51,11 +51,11 @@ export const faqData: Record<string, FAQCategory> = {
       },
       {
         q: "Can I create a Maxy account?",
-        a: "Yes. You can create a Maxy account to log in to our apps like Tackle, with a unique Maxy ID and password."
+        a: "Yes. You can create a Maxy account to access our apps, with a unique Maxy ID and password."
       },
       {
         q: "How do I contact Maxy or get support?",
-        a: "You can reach us via our Contact page, email us at contact@maxy.com, or for technical assistance email support@maxy.co.in. You can also visit https://maxy.co.in for more help."
+        a: "You can reach us via our Contact page, email us at hello@maxy.co.in, or for technical assistance email support@maxy.co.in. You can also visit https://maxy.co.in/support for more help."
       },
       {
         q: "How often can I change my Maxy ID?",
@@ -128,7 +128,7 @@ export const faqData: Record<string, FAQCategory> = {
   //     },
   //     {
   //       q: "How can I contact support?",
-  //       a: "Email us at support@maxy.co.in or visit https://maxy.co.in."
+  //       a: "Email us at support@maxy.co.in or visit https://maxy.co.in/support."
   //     }
   //   ],
   // },
@@ -161,7 +161,7 @@ export const faqData: Record<string, FAQCategory> = {
   //     },
   //     {
   //       q: "How can I contact support?",
-  //       a: "Email us at support@maxy.co.in or visit https://maxy.co.in."
+  //       a: "Email us at support@maxy.co.in or visit https://maxy.co.in/support."
   //     }
   //   ],
   // },

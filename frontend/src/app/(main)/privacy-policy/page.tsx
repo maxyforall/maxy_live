@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
               <li><strong className="text-primary">Country:</strong> Telangana, India.</li>
               <li><strong className="text-primary">Device:</strong> Any device used to access Maxy services, including mobile phones, tablets, or computers.</li>
               <li><strong className="text-primary">Personal Data:</strong> Information that identifies or could identify you.</li>
-              <li><strong className="text-primary">Service:</strong> The Maxy website, its centralized account system, and related features</li>
+              <li><strong className="text-primary">Service:</strong> The Maxy website, its centralized account system, and related features.</li>
               <li><strong className="text-primary">Service Provider:</strong> Third parties that support the operation, improvement, and maintenance of our services.</li>
               <li><strong className="text-primary">Usage Data:</strong> Automatically collected information related to how our services are used.</li>
               <li><strong className="text-primary">Website:</strong> Refers to Maxy, available at <a href="https://maxy.co.in" className="text-blue-400">maxy.co.in</a>.</li>
@@ -159,10 +159,10 @@ export default function PrivacyPolicy() {
           <div>
             <strong className="text-primary">Types of Cookies:</strong>
             <ul className="list-disc pl-6 space-y-1 text-secondary mt-2">
-              <li><strong>Essential Cookies:</strong>Required for basic functionality and authentication.</li>
+              <li><strong>Essential Cookies:</strong> Required for basic functionality and authentication.</li>
               <li><strong>Preference Cookies:</strong> Store your settings and preferences.</li>
               <li><strong>Analytics Cookies:</strong> Help us improve performance and reliability.</li>
-              <li><strong>Notice Cookies:</strong>Record cookie consent.</li>
+              <li><strong>Notice Cookies:</strong> Record cookie consent.</li>
             </ul>
           </div>
           <p className="text-secondary leading-relaxed">

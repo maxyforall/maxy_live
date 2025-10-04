@@ -107,7 +107,7 @@ export default function About() {
       <section className="w-full flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 px-4 sm:px-6">
         <h3 className="text-4xl md:text-5xl lg:text-7xl font-semibold mb-8 md:mb-12 lg:mb-16 text-primary">Our <span className="text-secondary">Ecosystem</span></h3>
         <p className="text-secondary max-w-3xl text-center mb-8 md:mb-12 text-base md:text-lg">
-          Maxy is more than a platform—it's a growing digital ecosystem designed to empower productivity, enrich lifestyles, and build vibrant, knowledge-driven communities.
+          Maxy is more than a platform; it's a growing digital ecosystem designed to empower productivity, enrich lifestyles, and build vibrant, knowledge-driven communities.
         </p>
 
         {/* Tree Structure */}
@@ -269,11 +269,14 @@ export default function About() {
           ].map((value, index) => (
             <div
               key={index}
-              className="card hover:surface-hover transition-all duration-300 transform hover:-translate-y-1 md:hover:-translate-y-2"
+              className="card flex flex-col items-center justify-center text-center p-6 hover:surface-hover transition-all duration-300 transform hover:-translate-y-1 md:hover:-translate-y-2"
             >
-              <h5 className="font-semibold text-lg md:text-xl text-center mb-2 text-primary">{value.title}</h5>
-              <p className="text-center text-sm md:text-base text-secondary">{value.description}</p>
+              <h5 className="font-semibold text-lg md:text-xl mb-2 text-primary">
+                {value.title}
+              </h5>
+              <p className="text-sm md:text-base text-secondary">{value.description}</p>
             </div>
+
           ))}
         </div>
       </section>

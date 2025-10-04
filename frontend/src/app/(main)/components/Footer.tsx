@@ -303,7 +303,7 @@ export default function Footer() {
               SiteMap
             </Link>
             <span className="hidden md:block">|</span>
-            <Link href="/support/faq/maxy" className="hover:text-white transition-colors duration-200">
+            <Link href="/support/faq/" className="hover:text-white transition-colors duration-200">
               FAQ
             </Link>
           </div>

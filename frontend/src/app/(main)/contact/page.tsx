@@ -38,7 +38,7 @@ console.log("Backend API:", API_URL);
     setStatus('loading');
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact/create`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/contact/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -64,7 +64,7 @@ console.log("Backend API:", API_URL);
     e.preventDefault();
     setSubscribeStatus('loading');
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscribe/create`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/subscribe/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email }),
