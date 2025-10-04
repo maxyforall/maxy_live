@@ -248,7 +248,7 @@ export default function Footer() {
       <div className="border-t border-white/5 py-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4 px-4 text-xs text-gray-400">
           <div className="flex flex-col md:flex-row items-center gap-10">
-            <span className="hidden sm:block">© {new Date().getFullYear()} Maxy Technologies LLP. All Rights Reserved.</span>
+            <span className="hidden sm:block">© {new Date().getFullYear()} Maxy</span>
             <div className="flex flex-row items-center justify-start gap-8 md:gap-6">
               <Link
                 href="https://x.com/maxytechs"
@@ -309,7 +309,7 @@ export default function Footer() {
           </div>
 {/* Visible on small screens only */}
 <span className="block sm:hidden text-gray-600 mb-8">
-  © {new Date().getFullYear()} Maxy Technologies LLP. All Rights Reserved.
+  © {new Date().getFullYear()} Maxy
 </span>
         </div>
       </div>
