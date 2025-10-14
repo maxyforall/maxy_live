@@ -302,29 +302,36 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-//delete user
+// @desc    Delete user
 export const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
+
     if (!userId) {
-      return res.status(400).json({ message: 'User ID is required' });
+      return res.status(400).json({ success: false, message: 'User ID is required' });
     }
 
+    // Find user by ID
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
-    
+
     // Ensure user can only delete their own account (unless admin)
-    if (userId !== req.user._id.toString()) {
-      return res.status(403).json({ message: 'Not authorized to delete this user' });
+    if (req.user._id.toString() !== userId) {
+      return res.status(403).json({ success: false, message: 'Not authorized to delete this user' });
     }
-    
-    await user.deleteOne();
-    res.json({ message: 'User deleted successfully' });
+
+    await User.findByIdAndDelete(userId);
+
+    return res.status(200).json({
+      success: true,
+      message: 'User account deleted successfully',
+    });
+
   } catch (error) {
-    console.error('Delete user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error('❌ Delete user error:', error);
+    return res.status(500).json({ success: false, message: 'Server error during deletion' });
   }
 };
 
