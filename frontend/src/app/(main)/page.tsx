@@ -121,10 +121,10 @@ export default function Home() {
           className="relative z-10 w-full h-full max-w-7xl flex flex-col items-center justify-center text-center mt-10 sm:mt-14 md:mt-16 mb-6 px-2 sm:px-6 md:px-10 lg:px-12"
         >
           <h2 className="hidden sm:block text-[#cccccc] text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-[100px] font-outfit font-light mb-6 sm:mb-8 md:mb-10 drop-shadow-md leading-tight">
-            Your life,<br /> Enhanced by{" "} Maxy.
+            Maxy,<br /> Enhancing the{" "} way you live.
           </h2>
           <h3 className="block sm:hidden text-[#cccccc] text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-[100px] font-outfit font-light mb-6 sm:mb-8 md:mb-10 drop-shadow-md leading-tight">
-            Your life,<br /> Enhanced by{" "} Maxy.
+            Maxy,<br /> Enhancing the{" "} way you live.
           </h3>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 md:gap-6 mt-4">

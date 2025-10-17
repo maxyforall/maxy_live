@@ -1,16 +1,17 @@
 import express from 'express';
 import User from '../models/UserModel.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 /**
  * @route   GET /api/users
  * @desc    Get all users
- * @access  Public (Admin panel)
+ * @access  Admin only
  */
-router.get('/', async (req, res) => {
+router.get('/', protect, admin, async (req, res) => {
   try {
-    const users = await User.find().sort({ createdAt: -1 });
+    const users = await User.find().sort({ createdAt: -1 }).select('-password');
     res.json(users);
   } catch (error) {
     console.error('❌ Error fetching users:', error);
@@ -21,14 +22,15 @@ router.get('/', async (req, res) => {
 /**
  * @route   PATCH /api/users/:id/deactivate
  * @desc    Deactivate user account
- * @access  Public (Admin panel)
+ * @access  Admin only
  */
-router.patch('/:id/deactivate', async (req, res) => {
+router.patch('/:id/deactivate', protect, admin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
     user.account_status = 'deactivated';
+    user.last_modified = new Date();
     await user.save();
 
     res.json({ message: 'User deactivated successfully', user });
@@ -41,9 +43,9 @@ router.patch('/:id/deactivate', async (req, res) => {
 /**
  * @route   DELETE /api/users/:id
  * @desc    Permanently delete a user
- * @access  Public (Admin panel)
+ * @access  Admin only
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', protect, admin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
