@@ -158,8 +158,11 @@ export default function Navbar() {
                                         <div className="px-6 py-4 bg-gradient-to-r  from-gray-800/30 to-gray-700/20 border-b border-gray-600/30">
                                             <div className="flex items-center gap-4">
                                                 <div className="relative rounded-2xl bg-[#2a2a2a] p-2">
-                                                    {(user.firstName[0] + user.lastName[0]).toUpperCase()}
-                                                </div>
+  {user?.firstName && user?.lastName
+    ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
+    : 'U'}
+</div>
+
                                                 <div className="flex-1 min-w-0">
                                                     <p className="text-white font-semibold text-lg truncate">{user.firstName + ' ' + user.lastName}</p>
                                                     <p className="text-gray-300 text-sm truncate">{'@' + user.maxy_id}</p>
@@ -355,8 +358,11 @@ export default function Navbar() {
                                                 />
                                             ) : (
                                                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#2a2a2a] text-white font-semibold text-lg ring-2 ring-gray-500/30">
-                                                    {(user.firstName[0] + user.lastName[0]).toUpperCase()}
-                                                </div>
+  {user?.firstName && user?.lastName
+    ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
+    : 'U'}
+</div>
+
                                             )}
 
                                             <div className="flex-1">

@@ -259,7 +259,7 @@ export default function Footer() {
                 <Image src="/icons/x.svg" alt="X" width={26} height={26} />
               </Link>
               <Link
-                href="https://www.instagram.com/maxytechs"
+                href="https://www.instagram.com/maxyglobal/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-transform"

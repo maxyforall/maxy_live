@@ -4,12 +4,19 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, User, Mail, Calendar, UserCheck, Lock, Hash, ArrowRight, ArrowLeft, Check, AtSign } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import EmailVerificationUI from './EmailVerificationUI';
+import Maintenance from '@/app/(main)/components/Maintenance';
+
+const MAINTENANCE_MODE = false;
 
 // Current terms version
 const CURRENT_TERMS_VERSION = "1.0";
 
 
 export default function SignUp() {
+  if (MAINTENANCE_MODE) {
+    return <Maintenance />;
+  }
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -27,6 +34,9 @@ export default function SignUp() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [verificationSent, setVerificationSent] = useState(false);
+const [emailVerified, setEmailVerified] = useState(false);
+
 
   const totalSteps = 4;
 
@@ -249,6 +259,33 @@ export default function SignUp() {
     }
   };
 
+  const sendVerificationEmail = async () => {
+  if (!formData.professionalMail || !validateEmail(formData.professionalMail)) {
+    toast.error("Please enter a valid email.");
+    return;
+  }
+
+  try {
+    // Call your backend endpoint to send verification
+    const res = await fetch(`${API_URL}api/auth/send-verification`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: formData.professionalMail }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success("Verification email sent!");
+      setVerificationSent(true);
+    } else {
+      toast.error(data.message || "Failed to send verification email.");
+    }
+  } catch (error: any) {
+    toast.error(`Network error: ${error.message}`);
+  }
+};
+
+
   const passwordValidation = validatePassword(formData.password);
 
   return (
@@ -412,29 +449,37 @@ export default function SignUp() {
 
             {/* Step 2: Contact Information */}
             {currentStep === 2 && (
-              <div>
-                <label htmlFor="professionalMail" className="block text-sm font-semibold text-white mb-2">
-                  Professional Email *
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <input
-                    type="email"
-                    id="professionalMail"
-                    name="professionalMail"
-                    value={formData.professionalMail}
-                    onChange={handleInputChange}
-                    placeholder="your.email@example.com"
-                    autoComplete="email"
-                    className={`pl-10 w-full rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#50A8FF] outline-none transition-all duration-200 bg-neutral-900 text-white border ${errors.professionalMail ? 'border-red-500' : 'border-neutral-700'}`}
-                  />
-                </div>
-                <p className="mt-2 text-xs text-gray-400">
-                  We'll use this email to send you important updates.
-                </p>
-                {errors.professionalMail && <p className="mt-1 text-xs text-red-400">{errors.professionalMail}</p>}
-              </div>
-            )}
+  <div className="mt-6 text-center">
+    {!verificationSent ? (
+      <>
+        {/* Email input */}
+        <input
+          type="email"
+          name="professionalMail"
+          placeholder="Enter your email"
+          value={formData.professionalMail}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 rounded-xl bg-[#1B1D23] text-white border border-gray-700"
+        />
+
+        <button
+  onClick={sendVerificationEmail}
+  className="mt-6 bg-[#50A8FF] hover:bg-[#3997e9] transition text-white rounded-xl px-5 py-3 font-medium w-full"
+>
+  Send Verification Email
+</button>
+
+      </>
+    ) : (
+      <EmailVerificationUI
+        email={formData.professionalMail}
+        setEmailVerified={setEmailVerified}
+        setCurrentStep={setCurrentStep}
+      />
+    )}
+  </div>
+)}
+
 
             {/* Step 3: Maxy ID */}
             {currentStep === 3 && (

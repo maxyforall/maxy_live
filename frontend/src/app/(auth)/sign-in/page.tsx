@@ -5,7 +5,14 @@ import { Eye, EyeOff, AtSign, Lock, ArrowRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Image from 'next/image';
 
+import Maintenance from '@/app/(main)/components/Maintenance';
+
+const MAINTENANCE_MODE = true;
+
 export default function SignIn() {
+  if (MAINTENANCE_MODE) {
+      return <Maintenance />;
+    }
   const [formData, setFormData] = useState({ maxyId: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});

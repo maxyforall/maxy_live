@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema({
     dateOfBirth: { type: String, required: true, match: /^\d{2}\/\d{2}\/\d{4}$/ },
     gender: { type: String, required: true, enum: ['male', 'female', 'other', 'prefer not to say'] },
     emailId: { type: String, required: true, unique: true, lowercase: true, trim: true },
+
+    // ===== Email verification fields =====
+    emailVerified: { type: Boolean, default: false },
+    emailVerificationToken: { type: String },
+    emailVerificationExpires: { type: Date },
+
     maxy_id: { type: String, required: true, unique: true, index: true },
     maxy_id_created_at: { type: Date, default: Date.now },
     password: { type: String, required: true },
